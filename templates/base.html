@@ -1,199 +1,210 @@
-<!doctype html>
-<!--
-     Material Design Lite
-     Copyright 2015 Google Inc. All rights reserved.
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-     https://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License
-   -->
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
     <head>
+        <title>{{ tilte or "Thongtinluadao - Hãy luôn là người tiêu dùng thông thái" }}</title>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="{{ description }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ tilte or "Thongtinluadao - Hãy luôn là người tiêu dùng thông thái" }}</title>
-
-        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <!-- add to homescreen for chrome on android -->
         <meta name="mobile-web-app-capable" content="yes">
         <link rel="icon" sizes="192x192" href="{{ url_for('static', filename="img/android-desktop.png") }}">
 
-        <!-- Add to homescreen for Safari on iOS -->
+        <!-- add to homescreen for safari on ios -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <meta name="apple-mobile-web-app-title" content="material design lite">
         <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename="img/ios-desktop.png") }}">
 
-        <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="{{ url_for('static', filename="images/touch/ms-touch-icon-144x144-precomposed.png") }}">
-        <meta name="msapplication-TileColor" content="#3372DF">
+        <!-- tile icon for win8 (144x144 + tile color) -->
+        <meta name="msapplication-tileimage" content="{{ url_for('static', filename="img/touch/ms-touch-icon-144x144-precomposed.png") }}">
+        <meta name="msapplication-tilecolor" content="#3372df">
 
-        <link rel="shortcut icon" href="{{ url_for('static', filename="images/favicon.png") }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename="img/favicon.png") }}">
 
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
         <!--
              <link rel="canonical" href="http://www.example.com/">
            -->
-
-        <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename="css/material.min.css") }}">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic" type="text/css"/>
         <link rel="stylesheet" href="{{ url_for('static', filename="css/styles.css") }}">
-        <style>
-         #view-source {
-             position: fixed;
-             display: block;
-             right: 0;
-             bottom: 0;
-             margin-right: 40px;
-             margin-bottom: 40px;
-             z-index: 900;
-         }
-        </style>
+        {% block css %}
+        {% endblock %}
     </head>
+
     <body>
-        <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
-            <main class="mdl-layout__content">
-                <div class="demo-blog__posts mdl-grid">
-                    <div class="mdl-card coffee-pic mdl-cell mdl-cell--8-col">
-                        <div class="mdl-card__media mdl-color-text--grey-50">
-                            <h3><a href="entry.html">Coffee Pic</a></h3>
+        <div class="body-container">
+            <div class="top-head">
+                <header class="header">
+                    <div class="row">
+                        <div class="medium-4 small-12 columns">
+                            <a href="#" title="Hashnode Home" class="logo">
+                                <img src="{{ url_for('static', filename="img/Hashnode-logo-flat.png") }}">
+                            </a>
                         </div>
-                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                            <div class="minilogo"></div>
-                            <div>
-                                <strong>The Newist</strong>
-                                <span>2 days ago</span>
+                        
+                        <div class="medium-8 small-12 header-actions columns">
+                            <div class="login-component right">
+                                <a href="#" class="main-login-button">
+                                    <i class="mdi mdi-github-circle"></i>
+                                    <span> Login with GitHub</span>
+                                </a>
+
+                                <a href="#" class="more-option">
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
-                        <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
-                            <i class="material-icons mdl-color-text--white" role="presentation">add</i>
-                            <span class="visuallyhidden">add</span>
-                        </button>
-                        <div class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
-                            <img src="{{ url_for('static', filename="img/logo.png") }}">
-                            +1,337
-                        </div>
-                        <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-                            <div>
-                                <strong>The Newist</strong>
-                            </div>
-                            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="menubtn">
-                                <li class="mdl-menu__item">About</li>
-                                <li class="mdl-menu__item">Message</li>
-                                <li class="mdl-menu__item">Favorite</li>
-                                <li class="mdl-menu__item">Search</li>
+                            
+                            <ul class="inline-list header-links right">
+                                <li class="hide-for-small-only">
+                                    <a href="#">
+                                        <i class="mdi mdi-magnify"></i>
+                                    </a>
+                                </li>
                             </ul>
-                            <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">more_vert</i>
-                                <span class="visuallyhidden">show menu</span>
-                            </button>
                         </div>
                     </div>
-                    <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__media mdl-color-text--grey-50">
-                            <h3><a href="entry.html">On the road again</a></h3>
-                        </div>
-                        <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-                        </div>
-                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                            <div class="minilogo"></div>
-                            <div>
-                                <strong>The Newist</strong>
-                                <span>2 days ago</span>
+                </header>
+            </div>
+
+            <div class="content">
+                <div class="content-area">
+                    {% block home_banner %}
+                    <div class="homepage-banner">
+                        <div class="row small-collapse">
+                            <div class="medium-12 column">
+                                <div class="banner-container">
+                                    <div class="gradient-layer"></div>
+                                    <div class="text-layer">
+                                        <div class="text-wrapper">
+                                            <h2>A community for software developers.</h2>
+                                            <h3>Discuss, Share, Connect and Hang out.</h3>
+                                            <p>
+                                                <a href="#" class="btn-started">Join the Party!</a>
+                                                <a href="#" class="btn-started transparent">
+                                                    <span>5 reasons to join </span>
+                                                    <i class="mdi mdi-chevron-right"></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mdl-card amazing mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__title mdl-color-text--grey-50">
-                            <h3 class="quote"><a href="entry.html">I couldn’t take any pictures but this was an amazing thing…</a></h3>
+                    {% endblock %}
+
+                    <div class="row">                        
+                        <!-- Left sidebar -->
+                        {% block left_sidebar %}
+                        <div class="medium-2 hide-for-small-only column left-navigation">
+                            <ul class="list-nav">
+                                <li>
+                                    <a class="active" href="#">
+                                        <i class="mdi mdi-earth"></i>
+                                        <span>Explore</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="#">
+                                        <i class="mdi mdi-earth"></i>
+                                        <span>Explore</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="" href="#">
+                                        <i class="mdi mdi-earth"></i>
+                                        <span>Explore</span>
+                                    </a>
+                                </li>
+                                                 
+                            </ul>
                         </div>
-                        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-                        </div>
-                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                            <div class="minilogo"></div>
-                            <div>
-                                <strong>The Newist</strong>
-                                <span>2 days ago</span>
+                        {% endblock %}
+                        <!-- End left sidebar -->
+
+                        <!-- Content -->
+                        {% block content %}                        
+                        {% endblock %}
+                        <!-- End content -->
+
+                        <!-- Right sidebar -->
+                        {% block right_sidebar %}
+                        <div class="medium-3 column right-sidebar home-sidebar">
+                            <div class="sidebar-widget trending-nodes">
+                                <div class="widget-header">
+                                    <h3>Category</h3>
+                                </div>
+                                <ul class="list-unstyled trending-nodes-list">
+                                    <li class="active">
+                                        <a href="#">
+                                            <div class="row">
+                                                <div class="small-9 column">Programming</div>
+                                                <div class="small-3 symbol-col column">
+                                                    <i class="mdi mdi-menu-up"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="row">
+                                                <div class="small-9 column">Programming</div>
+                                                <div class="small-3 symbol-col column">
+                                                    <i class="mdi mdi-menu-up"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="row">
+                                                <div class="small-9 column">Programming</div>
+                                                <div class="small-3 symbol-col column">
+                                                    <i class="mdi mdi-menu-up"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="row">
+                                                <div class="small-9 column">Programming</div>
+                                                <div class="small-3 symbol-col column">
+                                                    <i class="mdi mdi-menu-up"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="company-widget undefined">
+                                <p>© 2016 · Hashnode · LinearBytes Inc.</p>
+                                <p>
+                                    <a href="#">About</a>
+                                    <span> </span>
+                                    <a href="#">Terms</a>
+                                    <span> </span>
+                                    <a href="#">Privacy</a>
+                                    <span> </span>
+                                    <a href="#" target="_Blank">Report 2015</a>
+                                </p>
                             </div>
                         </div>
+                        {% endblock %}
+                        <!-- End right sidebar -->
                     </div>
-                    <div class="mdl-card shopping mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__media mdl-color-text--grey-50">
-                            <h3><a href="entry.html">Shopping</a></h3>
-                        </div>
-                        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-                        </div>
-                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                            <div class="minilogo"></div>
-                            <div>
-                                <strong>The Newist</strong>
-                                <span>2 days ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="demo-nav mdl-cell mdl-cell--12-col">
-                        <div class="section-spacer"></div>
-                        <a href="entry.html" class="demo-nav__button" title="show more">
-                            More
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">arrow_forward</i>
-                            </button>
-                        </a>
-                    </nav>
                 </div>
-                <footer class="mdl-mini-footer">
-                    <div class="mdl-mini-footer--left-section">
-                        <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
-                            <span class="visuallyhidden">Twitter</span>
-                        </button>
-                        <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
-                            <span class="visuallyhidden">Facebook</span>
-                        </button>
-                        <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
-                            <span class="visuallyhidden">Google Plus</span>
-                        </button>
-                    </div>
-                    <div class="mdl-mini-footer--right-section">
-                        <button class="mdl-mini-footer--social-btn social-btn__share">
-                            <i class="material-icons" role="presentation">share</i>
-                            <span class="visuallyhidden">share</span>
-                        </button>
-                    </div>
-                </footer>
-            </main>
-            <div class="mdl-layout__obfuscator"></div>
+            </div>
         </div>
-        <a href="https://github.com/google/material-design-lite/blob/master/templates/blog/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
-        <script src="{{ url_for('static', filename="js/material.min.js") }}"></script>
-    </body>
-    <script>
-     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-         var link = el.querySelector('a');
-         if(!link) {
-             return;
-         }
-         var target = link.getAttribute('href');
-         if(!target) {
-             return;
-         }
-         el.addEventListener('click', function() {
-             location.href = target;
-         });
-     });
-    </script>
+
+        <script src="{{ url_for('static', filename="js/modernizr.js") }}"></script>
+        {% block js %}
+        {% endblock %}
+    </body>    
 </html>

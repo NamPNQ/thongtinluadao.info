@@ -1,1 +1,146 @@
 {% extends "base.html" %}
+
+{% block content %}
+    <div class="medium-7 small-12 column content-column">
+        <div class="explore-tabs">
+            <div class="title-info">
+                <h3>
+                    <i class="mdi mdi-earth"></i>
+                    <span> Explore</span>
+                </h3>
+
+                <hr class="divider">
+                <p>
+                    <span>Today, </span>
+                    <span>26th January 2016</span>
+                </p>
+            </div>
+
+            <a class="active" href="#">
+                <i class="mdi mdi-star-outline"></i>
+                <span> Featured</span>
+            </a>
+        
+            <a href="#" class="">
+                <i class="mdi mdi-trending-up"></i>
+                <span> Rising</span></a>
+        </div>
+        <!-- Explore tabs -->
+
+        <div class="post-info">
+            <div class="post-card">
+                <div class="post-header">
+                    <ul class="inline-list post-details">
+                        <li class="">
+                            <a href="#" class="creator-photo">
+                                <img src="{{ url_for('static', filename="img/avatar.jpg") }}" class="" />
+                            </a>
+                        </li>
+
+                        <li class="user-name">
+                            <a href="#" class="creator-name">Jennifer Ferles</a>
+                        </li>
+
+                        <li class="user-action-handle">
+                            <p>
+                                <span></span>
+                                <span> </span>
+                                <span class="user-action">asked a question</span></p>
+                        </li>
+
+                        <li class="middot">
+                            <p>·</p>
+                        </li>
+
+                        <li class="post-datetime">
+                            <a href="#">a day ago</a>
+                        </li>
+                    </ul>
+
+                    <p class="author-tagline">
+                        <a href="#" class="creator-username">@jenni_ferles</a>
+                        <span>
+                            <span> · </span>
+                            <span>Designer in making</span>
+                        </span>
+                    </p>
+
+                    <h2>
+                        <a href="#">I am just begining to explore web designing. What are your tips for learning it?</a>
+                    </h2>
+                </div>
+
+                <div class="post-meta-desc">
+                    <div>What are key things that I should keep in mind. What steps should I follow? What are some nice courses on web designing?</div>
+                </div>
+
+                <div class="post-footer">
+                    <ul class="inline-list post-actions left">
+                        <li>
+                            <a href="#" class="vote-btn ">
+                                <i class="mdi mdi-arrow-up-bold"></i>
+                                <span>4</span>
+                            </a>
+                        </li>
+                        <!-- Vote up -->
+                        
+                        <li>
+                            <a href="#" class="vote-btn down-vote-btn ">
+                                <i class="mdi mdi-arrow-down-bold"></i>
+                            </a>
+                        </li>
+                        <!-- Vote down -->
+
+                        <li>                
+                            <a href="#" class="normal-link">
+                                <i class="mdi mdi-message-text-outline"></i>
+                                <span class="normal-link-text">2</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <ul class="inline-list faces-list">
+                                <li class="">
+                                    <a href="#">
+                                        <img src="{{ url_for('static', filename="img/user1.jpg") }}" class="">
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#">
+                                        <img src="{{ url_for('static', filename="img/user2.jpg") }}" class="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div>
+                        <ul class="right inline-list post-actions">
+                            <li>
+                                <a href="#" title="Post Activity" class="post-footer-action">
+                                    <i class="mdi mdi-pulse"></i>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#" title="Add to collection" class="post-footer-action">
+                                    <i class="mdi mdi-bookmark-outline-plus"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a title="Share" href="#" class="share-btn">
+                                    <i class="mdi mdi-share-variant"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>                                
+        </div>
+        <!-- Post info -->
+
+        <span style="font-size:0;"></span>
+    </div>
+{% endblock %}
