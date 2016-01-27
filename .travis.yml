@@ -6,3 +6,7 @@ script: nosetests
 env:
   - ENV_STAGE=test
 cache: pip
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/b5b01da7487a990f966f
