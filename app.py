@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+    app
+    ~~~
+
+    TTLD app
+"""
+
 import os
 from flask import Flask, render_template
 from flask.ext.redis import FlaskRedis
