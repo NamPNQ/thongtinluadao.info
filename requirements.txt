@@ -1,4 +1,4 @@
 flask
 flask-redis
 factory-boy
-
+nose
