@@ -24,5 +24,9 @@ redis_store.init_app(app)
 def index():
     return render_template('index.html', body_class="index")
 
+@app.route('/entry')
+def entry():
+    return render_template('entry.html', body_class="entry")
+
 if __name__ == '__main__':
     app.run(debug=True)
