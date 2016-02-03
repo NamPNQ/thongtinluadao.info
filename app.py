@@ -11,18 +11,14 @@ from flask import Flask, render_template, request, session, url_for, redirect
 from models import db, User
 from flask_oauth import OAuth
 
-GOOGLE_CLIENT_ID = '513593066071-r10fps7htf4fvuvunad08p065rsbe6h9.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = ' dtAIGo1CZkw8Ibuk1jlGpK5G'
 REDIRECT_URI = '/oauth2callback'
-
-SECRET_KEY = 'staging sample key'
 
 app = Flask(__name__)
 app.config.from_object('app_config')
 if os.getenv('ENV_STAGE', 'dev') == 'test':
     app.config.from_object('tests.settings')
 
-app.secret_key = SECRET_KEY
+app.secret_key = app.config['SECRET_KEY']
 oauth = OAuth()
 db.init_app(app)
 
@@ -35,10 +31,10 @@ google = oauth.remote_app('google',
                           access_token_url='https://accounts.google.com/o/oauth2/token',
                           access_token_method='POST',
                           access_token_params={'grant_type': 'authorization_code'},
-                          consumer_key=GOOGLE_CLIENT_ID,
-                          consumer_secret=GOOGLE_CLIENT_SECRET)
+                          consumer_key=app.config['GOOGLE_CLIENT_ID'],
+                          consumer_secret=app.config['GOOGLE_CLIENT_SECRET'])
 
-@app.route('/social_login')
+@app.route('/social/login/google')
 def social_login():
     access_token = session.get('access_token')
     if access_token is None:
@@ -52,6 +48,7 @@ def social_login():
                   None, headers)
     try:
         res = urlopen(req)
+        print res
     except URLError, e:
         if e.code == 401:
             # Unauthorized - bad token
@@ -63,15 +60,14 @@ def social_login():
 
 @app.route('/google_login')
 def google_login():
-    callback=url_for('authorized', _external=True)
-    return google.authorize(callback=callback)
+    return google.authorize(callback=url_for('google_authorized', _external=True))
 
-@app.route(REDIRECT_URI)
+@app.route('/social/google/authorized')
 @google.authorized_handler
 def authorized(resp):
     access_token = resp['access_token']
     session['access_token'] = access_token, ''
-    return redirect(url_for('social_login'))
+    return redirect(url_for('index'))
 
 @google.tokengetter
 def get_access_token():
