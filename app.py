@@ -11,14 +11,11 @@ from flask import Flask, render_template, request, session, url_for, redirect
 from models import db, User
 from flask_oauth import OAuth
 
-REDIRECT_URI = '/oauth2callback'
-
 app = Flask(__name__)
 app.config.from_object('app_config')
 if os.getenv('ENV_STAGE', 'dev') == 'test':
     app.config.from_object('tests.settings')
 
-app.secret_key = app.config['SECRET_KEY']
 oauth = OAuth()
 db.init_app(app)
 

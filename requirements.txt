@@ -3,4 +3,4 @@ flask-redis
 flask-script
 factory-boy
 nose
-Flask-OAuth
+flask-oauth
